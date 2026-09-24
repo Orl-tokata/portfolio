@@ -11,11 +11,13 @@ export const CONTACT_LIMITS = {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
- * Optional form service endpoint (e.g. Formspree: https://formspree.io/f/xxxx).
- * When unset, the form falls back to opening the visitor's email app — the
- * site stays 100% static either way.
+ * Formspree form that emails submissions to profile.email. The endpoint is
+ * public by design (browsers post to it directly), so it lives in code; set
+ * NEXT_PUBLIC_CONTACT_ENDPOINT to override it, or to "" to fall back to
+ * opening the visitor's email app. The site stays 100% static either way.
  */
-const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "";
+const DEFAULT_CONTACT_ENDPOINT = "https://formspree.io/f/xzezgqqw";
+const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? DEFAULT_CONTACT_ENDPOINT;
 
 export function validateContact(values: ContactFormValues): ContactFormErrors {
   const errors: ContactFormErrors = {};
@@ -76,7 +78,8 @@ async function postToEndpoint(values: ContactFormValues): Promise<SubmitResult> 
     const response = await fetch(CONTACT_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ ...values, _replyto: values.email }),
+      // Formspree: `email` becomes the reply-to address, `_subject` the email subject.
+      body: JSON.stringify({ ...values, _subject: `[Portfolio] ${values.subject}` }),
       signal: AbortSignal.timeout(10000),
     });
     if (response.ok) return { ok: true, message: "Thanks for reaching out! I'll get back to you soon." };

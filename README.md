@@ -71,7 +71,8 @@ portfolio/
 ## Contact form (no backend)
 
 - **Default, zero setup:** submitting opens the visitor's email app with the subject and message already filled in, addressed to `profile.email`.
-- **Optional, send directly from the page:** create a free form at [Formspree](https://formspree.io) and set `NEXT_PUBLIC_CONTACT_ENDPOINT=https://formspree.io/f/xxxxxxx`. Messages are then emailed to you.
+- **Sends directly from the page** through the free [Formspree](https://formspree.io) form "Portfolio contact" (`DEFAULT_CONTACT_ENDPOINT` in `src/lib/contact.ts`). Messages arrive at orltokata@gmail.com with the subject `[Portfolio] …`, and replying goes to the visitor. The free plan allows 50 messages a month.
+- If the endpoint is set to empty, the form opens the visitor's email app instead.
 
 ## Run locally
 
@@ -95,7 +96,7 @@ npx serve out                # preview the exact files you will deploy
 | Variable | Description |
 | -------- | ----------- |
 | `NEXT_PUBLIC_SITE_URL` | Overrides the public URL used for canonical, sitemap and OG tags. Production builds on Vercel use `PRODUCTION_URL` in `src/lib/site.ts` (https://orl-tokata.vercel.app). |
-| `NEXT_PUBLIC_CONTACT_ENDPOINT` | Form service URL. If empty, the form falls back to the visitor's email app. |
+| `NEXT_PUBLIC_CONTACT_ENDPOINT` | Overrides the Formspree endpoint. Set it to empty to use the email-app fallback. |
 | `NEXT_PUBLIC_GITHUB_USERNAME` | Overrides the GitHub username. The default is `Orl-tokata` from `profile.ts`. |
 | `GITHUB_TOKEN` | Build-time only, never sent to the browser. Shows the real contribution calendar; without it, the section links to your GitHub activity instead. |
 | `GITHUB_DISABLE_FETCH` | Set to `true` to force sample GitHub data. |
