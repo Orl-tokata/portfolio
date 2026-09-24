@@ -67,7 +67,6 @@ portfolio/
 | IDE files & terminal (`/ide`) | `src/app/ide/page.tsx` |
 | Featured GitHub repos | `featuredRepos` in `src/data/profile.ts` |
 
-> The email address is still a **placeholder**. Replace it before publishing.
 
 ## Contact form (no backend)
 

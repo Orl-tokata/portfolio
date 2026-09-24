@@ -1,10 +1,6 @@
 import type { NavItem, Profile } from "@/types";
 
-/**
- * Single source of truth for personal details used across the site and SEO.
- * NOTE: the email address is still a placeholder — replace it with a real one
- * (the contact form sends to it).
- */
+/** Single source of truth for personal details used across the site and SEO. */
 export const profile: Profile = {
   name: "Orl Tokata",
   initials: "OT",
@@ -20,7 +16,7 @@ export const profile: Profile = {
   location: "Phnom Penh, Cambodia",
   yearsOfExperience: 4,
   focus: "Enterprise & Financial Systems",
-  email: "hello@orltokata.dev",
+  email: "orltokata@gmail.com",
   company: "KOSIGN",
   resumeUrl: "/resume/Orl_Tokata_Resume.pdf",
   photo: { portrait: "/images/orl-tokata.webp", avatar: "/images/orl-tokata-avatar.webp" },
@@ -28,7 +24,7 @@ export const profile: Profile = {
   socials: [
     { label: "GitHub", href: "https://github.com/Orl-tokata", icon: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/orl-tokata-3201b9262", icon: "linkedin" },
-    { label: "Email", href: "mailto:hello@orltokata.dev", icon: "email" },
+    { label: "Email", href: "mailto:orltokata@gmail.com", icon: "email" },
   ],
 };
 
