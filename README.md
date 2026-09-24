@@ -2,6 +2,8 @@
 
 A custom-designed, interactive portfolio for **Orl Tokata, Full-Stack Software Engineer**.
 
+**Live site:** https://orl-tokata.vercel.app
+
 It's built with Next.js and **exported as a fully static site**: plain HTML, CSS and JS in `out/`, with no server or database. It deploys free on Vercel, Netlify, Cloudflare Pages or GitHub Pages.
 
 ## Tech stack
@@ -93,7 +95,7 @@ npx serve out                # preview the exact files you will deploy
 
 | Variable | Description |
 | -------- | ----------- |
-| `NEXT_PUBLIC_SITE_URL` | Your public URL, used for canonical, sitemap and OG tags. On Vercel it defaults to the production domain, so set it only for a custom domain. |
+| `NEXT_PUBLIC_SITE_URL` | Overrides the public URL used for canonical, sitemap and OG tags. Production builds on Vercel use `PRODUCTION_URL` in `src/lib/site.ts` (https://orl-tokata.vercel.app). |
 | `NEXT_PUBLIC_CONTACT_ENDPOINT` | Form service URL. If empty, the form falls back to the visitor's email app. |
 | `NEXT_PUBLIC_GITHUB_USERNAME` | Overrides the GitHub username. The default is `Orl-tokata` from `profile.ts`. |
 | `GITHUB_TOKEN` | Build-time only, never sent to the browser. Shows the real contribution calendar; without it, the section links to your GitHub activity instead. |

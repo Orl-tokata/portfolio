@@ -1,9 +1,13 @@
 import { profile } from "@/data/profile";
 
-/** Explicit URL first, then the production domain Vercel exposes at build time, then local dev. */
+/** Public address of the live site (set in Vercel → Project → Settings → Domains). */
+export const PRODUCTION_URL = "https://orl-tokata.vercel.app";
+
+/** Explicit override first, then the production address on Vercel production builds, then local dev. */
 function resolveSiteUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (process.env.VERCEL_ENV === "production") return PRODUCTION_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   return "http://localhost:3000";
 }
 
